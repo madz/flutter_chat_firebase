@@ -19,3 +19,22 @@ samples, guidance on mobile development, and a full API reference.
 #Run Code Generator
 flutter pub run build_runner build --delete-conflicting-outputs
 flutter pub run build_runner watch --delete-conflicting-outputs
+
+
+## Android Phone
+<div style="display:flex;flex-direction:row;">
+        <img src="screenshots/android_index.png" alt="screen_01" height="400" />
+       
+</div>
+<div style="display:flex;flex-direction:row;">
+        <img src="screenshots/android_login.png" alt="screen_01" height="400" />
+       
+</div>
+<div style="display:flex;flex-direction:row;">
+        <img src="screenshots/android_signup.png" alt="screen_01" height="400" />
+       
+</div>
+<div style="display:flex;flex-direction:row;">
+        <img src="screenshots/android_chat.png" alt="screen_01" height="400" />
+       
+</div>
