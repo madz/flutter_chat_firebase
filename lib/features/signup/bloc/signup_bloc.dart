@@ -41,11 +41,19 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   Stream<SignUpState> mapEventToState(SignUpEvent event) async* {
     yield* event.map(
       emailChanged: (e) async* {
-        yield state.copyWith(isEmailValid: validators.isValidEmail(e.email));
+        yield state.copyWith(
+          isEmailValid: validators.isValidEmail(e.email),
+          isSubmitting: false,
+          isSuccess: false,
+          isFailure: false,
+        );
       },
       passwordChanged: (e) async* {
         yield state.copyWith(
           isPasswordValid: validators.isValidPassword(e.password),
+          isSubmitting: false,
+          isSuccess: false,
+          isFailure: false,
         );
       },
       submitted: (e) async* {
