@@ -21,6 +21,24 @@ flutter pub run build_runner build --delete-conflicting-outputs
 flutter pub run build_runner watch --delete-conflicting-outputs
 
 
+## iOS Phone
+<span style="display:flex;flex-direction:row;">
+        <img src="screenshots/ios_index.png" alt="screen_01" height="400" />
+       
+</span>
+<span style="display:flex;flex-direction:row;">
+        <img src="screenshots/ios_login.png" alt="screen_01" height="400" />
+       
+</span>
+<span style="display:flex;flex-direction:row;">
+        <img src="screenshots/ios_signup.png" alt="screen_01" height="400" />
+       
+</span>
+<span style="display:flex;flex-direction:row;">
+        <img src="screenshots/ios_chat.png" alt="screen_01" height="400" />
+       
+</span>
+
 ## Android Phone
 <span style="display:flex;flex-direction:row;">
         <img src="screenshots/android_index.png" alt="screen_01" height="400" />
