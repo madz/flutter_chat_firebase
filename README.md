@@ -22,19 +22,19 @@ flutter pub run build_runner watch --delete-conflicting-outputs
 
 
 ## Android Phone
-<div style="display:flex;flex-direction:row;">
+<span style="display:flex;flex-direction:row;">
         <img src="screenshots/android_index.png" alt="screen_01" height="400" />
        
-</div>
-<div style="display:flex;flex-direction:row;">
+</span>
+<span style="display:flex;flex-direction:row;">
         <img src="screenshots/android_login.png" alt="screen_01" height="400" />
        
-</div>
-<div style="display:flex;flex-direction:row;">
+</span>
+<span style="display:flex;flex-direction:row;">
         <img src="screenshots/android_signup.png" alt="screen_01" height="400" />
        
-</div>
-<div style="display:flex;flex-direction:row;">
+</span>
+<span style="display:flex;flex-direction:row;">
         <img src="screenshots/android_chat.png" alt="screen_01" height="400" />
        
-</div>
+</span>
