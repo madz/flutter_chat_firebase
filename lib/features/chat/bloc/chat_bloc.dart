@@ -20,8 +20,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   final FirestoreGetQueryAllMessagesUseCase firestoreGetQueryAllMessagesUseCase;
 
-  String currentUserEmail;
-
   ChatBloc({
     @required this.firebaseGetUserUseCase,
     @required this.firestoreSendMessageUseCase,
@@ -48,15 +46,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         );
         yield ChatState.messageSent();
       },
-      getCurrentUserEmail: (val) async* {
-        final firebaseUser = await firebaseGetUserUseCase.call(NoParams());
-        currentUserEmail = firebaseUser.email;
-      },
+      getCurrentUserEmail: (val) async* {},
     );
-  }
-
-  String getCurrentUserEmail() {
-    return currentUserEmail;
   }
 
   Query getAllQueryMessages() {

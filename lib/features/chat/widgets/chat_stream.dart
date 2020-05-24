@@ -1,4 +1,5 @@
 import 'package:LIG_chat/core/di/injector.dart';
+import 'package:LIG_chat/features/authentication/bloc/authentication_bloc.dart';
 import 'package:LIG_chat/features/chat/bloc/chat_bloc.dart';
 import 'package:bubble/bubble.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,15 +7,13 @@ import 'package:flutter/material.dart';
 
 class ChatStream extends StatelessWidget {
   final _chatBloc = getIt<ChatBloc>();
+  final _authBloc = getIt<AuthenticationBloc>();
 
   @override
   Widget build(BuildContext context) {
-    _chatBloc.add(ChatEvent.getCurrentUserEmail());
-
     return StreamBuilder<QuerySnapshot>(
       stream: _chatBloc.getAllQueryMessages().snapshots(),
       builder: (context, snapshot) {
-        String currentUserEmail = _chatBloc.getCurrentUserEmail();
         if (!snapshot.hasData) {
           return Center(
             child: const CircularProgressIndicator(
@@ -31,7 +30,7 @@ class ChatStream extends StatelessWidget {
             final messageBubble = MessageBubble(
               senderEmail: senderEmail,
               messageText: senderMessage,
-              isMe: currentUserEmail == senderEmail,
+              isMe: _authBloc.getCurrentUserEmail() == senderEmail,
             );
 
             messageBubbles.add(messageBubble);

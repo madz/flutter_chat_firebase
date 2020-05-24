@@ -4,6 +4,7 @@ import 'package:LIG_chat/usecases/auth/firebase_get_user_usecase.dart';
 import 'package:LIG_chat/usecases/auth/firebase_is_signedin_usecase.dart';
 import 'package:LIG_chat/usecases/auth/firebase_signout_use_case.dart';
 import 'package:LIG_chat/usecases/usecase.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -20,6 +21,8 @@ class AuthenticationBloc
   final FirebaseIsSignedInUserUseCase firebaseIsSignedInUserUseCase;
   final FirebaseGetUserUseCase firebaseGetUserUseCase;
   final FirebaseSignOutUserUseCase firebaseSignOutUserUseCase;
+
+  String currentUserEmail;
 
   /// create Authentication bloc
   AuthenticationBloc({
@@ -38,18 +41,26 @@ class AuthenticationBloc
       authCheckRequested: (e) async* {
         final isSignedIn = await firebaseIsSignedInUserUseCase.call(NoParams());
         if (isSignedIn) {
-          yield AuthenticationState.authenticated();
+          final firebaseUser = await firebaseGetUserUseCase.call(NoParams());
+          currentUserEmail = firebaseUser.email;
+          yield AuthenticationState.authenticated(firebaseUser);
         } else {
           yield AuthenticationState.unauthenticated();
         }
       },
       signedIn: (e) async* {
-        yield AuthenticationState.authenticated();
+        final firebaseUser = await firebaseGetUserUseCase.call(NoParams());
+        currentUserEmail = firebaseUser.email;
+        yield AuthenticationState.authenticated(firebaseUser);
       },
       loggedOut: (e) async* {
         await firebaseSignOutUserUseCase.call(NoParams());
         yield AuthenticationState.unauthenticated();
       },
     );
+  }
+
+  String getCurrentUserEmail() {
+    return currentUserEmail;
   }
 }

@@ -377,8 +377,10 @@ class _$AuthenticationStateTearOff {
     return const AuthenticationStateInitial();
   }
 
-  AuthenticationStateAuthenticated authenticated() {
-    return const AuthenticationStateAuthenticated();
+  AuthenticationStateAuthenticated authenticated(FirebaseUser firebaseUser) {
+    return AuthenticationStateAuthenticated(
+      firebaseUser,
+    );
   }
 
   AuthenticationStateUnauthenticated unauthenticated() {
@@ -393,13 +395,13 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(FirebaseUser firebaseUser),
     @required Result unauthenticated(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(FirebaseUser firebaseUser),
     Result unauthenticated(),
     @required Result orElse(),
   });
@@ -471,7 +473,7 @@ class _$AuthenticationStateInitial implements AuthenticationStateInitial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(FirebaseUser firebaseUser),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
@@ -484,7 +486,7 @@ class _$AuthenticationStateInitial implements AuthenticationStateInitial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(FirebaseUser firebaseUser),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
@@ -533,6 +535,7 @@ abstract class $AuthenticationStateAuthenticatedCopyWith<$Res> {
           AuthenticationStateAuthenticated value,
           $Res Function(AuthenticationStateAuthenticated) then) =
       _$AuthenticationStateAuthenticatedCopyWithImpl<$Res>;
+  $Res call({FirebaseUser firebaseUser});
 }
 
 class _$AuthenticationStateAuthenticatedCopyWithImpl<$Res>
@@ -546,50 +549,74 @@ class _$AuthenticationStateAuthenticatedCopyWithImpl<$Res>
   @override
   AuthenticationStateAuthenticated get _value =>
       super._value as AuthenticationStateAuthenticated;
+
+  @override
+  $Res call({
+    Object firebaseUser = freezed,
+  }) {
+    return _then(AuthenticationStateAuthenticated(
+      firebaseUser == freezed
+          ? _value.firebaseUser
+          : firebaseUser as FirebaseUser,
+    ));
+  }
 }
 
 class _$AuthenticationStateAuthenticated
     implements AuthenticationStateAuthenticated {
-  const _$AuthenticationStateAuthenticated();
+  const _$AuthenticationStateAuthenticated(this.firebaseUser)
+      : assert(firebaseUser != null);
+
+  @override
+  final FirebaseUser firebaseUser;
 
   @override
   String toString() {
-    return 'AuthenticationState.authenticated()';
+    return 'AuthenticationState.authenticated(firebaseUser: $firebaseUser)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AuthenticationStateAuthenticated);
+        (other is AuthenticationStateAuthenticated &&
+            (identical(other.firebaseUser, firebaseUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.firebaseUser, firebaseUser)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(firebaseUser);
+
+  @override
+  $AuthenticationStateAuthenticatedCopyWith<AuthenticationStateAuthenticated>
+      get copyWith => _$AuthenticationStateAuthenticatedCopyWithImpl<
+          AuthenticationStateAuthenticated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(FirebaseUser firebaseUser),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
-    return authenticated();
+    return authenticated(firebaseUser);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(FirebaseUser firebaseUser),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (authenticated != null) {
-      return authenticated();
+      return authenticated(firebaseUser);
     }
     return orElse();
   }
@@ -624,8 +651,12 @@ class _$AuthenticationStateAuthenticated
 }
 
 abstract class AuthenticationStateAuthenticated implements AuthenticationState {
-  const factory AuthenticationStateAuthenticated() =
+  const factory AuthenticationStateAuthenticated(FirebaseUser firebaseUser) =
       _$AuthenticationStateAuthenticated;
+
+  FirebaseUser get firebaseUser;
+  $AuthenticationStateAuthenticatedCopyWith<AuthenticationStateAuthenticated>
+      get copyWith;
 }
 
 abstract class $AuthenticationStateUnauthenticatedCopyWith<$Res> {
@@ -670,7 +701,7 @@ class _$AuthenticationStateUnauthenticated
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(FirebaseUser firebaseUser),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
@@ -683,7 +714,7 @@ class _$AuthenticationStateUnauthenticated
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(FirebaseUser firebaseUser),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
