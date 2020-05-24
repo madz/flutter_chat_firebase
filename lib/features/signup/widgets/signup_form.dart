@@ -5,7 +5,6 @@ import 'package:LIG_chat/features/chat/screen/chat_screen.dart';
 import 'package:LIG_chat/features/signup/bloc/signup_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 ///form for Registering a User.
 class SignUpForm extends StatefulWidget {
@@ -119,9 +118,18 @@ class _SignUpFormState extends State<SignUpForm> {
                   textAlign: TextAlign.left,
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
+                  style: TextStyle(
+                      color: Color(0XFF647787),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
                   decoration: InputDecoration(
-                    hintText: 'Email',
-                    hintStyle: GoogleFonts.montserrat(),
+                    hintText: 'email',
+                    hintStyle: TextStyle(
+                        color: Color(0XFF647787),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                    fillColor: Color(0XFFF5F7FC),
+                    filled: true,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.0),
@@ -142,9 +150,18 @@ class _SignUpFormState extends State<SignUpForm> {
                   textAlign: TextAlign.left,
                   obscureText: true,
                   autocorrect: false,
+                  style: TextStyle(
+                      color: Color(0XFF647787),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
                   decoration: InputDecoration(
-                    hintText: 'Password',
-                    hintStyle: GoogleFonts.montserrat(),
+                    hintText: 'password',
+                    hintStyle: TextStyle(
+                        color: Color(0XFF647787),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                    fillColor: Color(0XFFF5F7FC),
+                    filled: true,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.0),

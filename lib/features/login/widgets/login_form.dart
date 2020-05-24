@@ -5,7 +5,6 @@ import 'package:LIG_chat/features/chat/screen/chat_screen.dart';
 import 'package:LIG_chat/features/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// a login form
 class LoginForm extends StatefulWidget {
@@ -116,25 +115,31 @@ class _LoginFormState extends State<LoginForm> {
           child: Form(
             key: _formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
                 TextFormField(
                   controller: _emailController,
                   textAlign: TextAlign.left,
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
-                  style: GoogleFonts.montserrat(),
+                  style: TextStyle(
+                      color: Color(0XFF647787),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
                   validator: (value) {
                     return !state.isEmailValid || value.isEmpty
                         ? 'Value is incorrect'
                         : null;
                   },
                   decoration: InputDecoration(
-                    hintText: 'Email',
-                    hintStyle: GoogleFonts.montserrat(),
+                    hintText: 'email',
+                    hintStyle: TextStyle(
+                        color: Color(0XFF647787),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                    fillColor: Color(0XFFF5F7FC),
+                    filled: true,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.0),
@@ -150,15 +155,23 @@ class _LoginFormState extends State<LoginForm> {
                   textAlign: TextAlign.left,
                   obscureText: true,
                   autocorrect: false,
-                  style: GoogleFonts.montserrat(),
+                  style: TextStyle(
+                      color: Color(0XFF647787),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
                   validator: (value) {
                     return !state.isPasswordValid || value.isEmpty
                         ? 'Value is incorrect'
                         : null;
                   },
                   decoration: InputDecoration(
-                    hintText: 'Password',
-                    hintStyle: GoogleFonts.montserrat(),
+                    hintText: 'password',
+                    hintStyle: TextStyle(
+                        color: Color(0XFF647787),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                    fillColor: Color(0XFFF5F7FC),
+                    filled: true,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.0),

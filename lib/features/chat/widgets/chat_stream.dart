@@ -70,11 +70,14 @@ class MessageBubble extends StatelessWidget {
             nipOffset: 10,
             nipWidth: 10,
             nipHeight: 10,
-            color: Color(0XFF61A305),
+            color: Color(0XFF89E307),
             nip: isMe ? BubbleNip.rightBottom : BubbleNip.leftBottom,
             child: Text(
               '$messageText',
-              style: const TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
             ),
           ),
           SizedBox(
@@ -82,7 +85,10 @@ class MessageBubble extends StatelessWidget {
           ),
           Text(
             isMe ? 'You' : senderEmail,
-            style: TextStyle(fontSize: 12.0, color: Colors.black54),
+            style: TextStyle(
+                color: Color(0XFF647787),
+                fontWeight: FontWeight.bold,
+                fontSize: 17),
           ),
         ],
       ),
