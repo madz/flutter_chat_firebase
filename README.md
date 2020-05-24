@@ -1,4 +1,4 @@
-# LIG_chat
+# Flutter Chat Firebase
 
 A new Flutter project.
 
