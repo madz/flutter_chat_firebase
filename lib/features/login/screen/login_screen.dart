@@ -19,25 +19,27 @@ class LoginScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          LoginForm(),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: NavButton(
-                title: 'Sign up',
-                navEvent: NavigationEvent.goToSignUpScreenEvent(),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            LoginForm(),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: NavButton(
+                  title: 'Sign up',
+                  navEvent: NavigationEvent.goToSignUpScreenEvent(),
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 20),
-            child: AcceptTerm(),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, top: 20),
+              child: AcceptTerm(),
+            ),
+          ],
+        ),
       ),
     );
   }
